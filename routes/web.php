@@ -16,11 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/users/create');
 });
-Route::view('test','test');
-Route::post('/items',[ItemController::class,'store']);
-Route::get('items',[ItemController::class,'index']);
-Route::get('/users',[UserController::class,'index']);
+
+Route::get('/users/create',[UserController::class,'create']);
 Route::post('/users',[UserController::class,'store'])->name('users.store');
-Route::get('/update',[UserController::class,'update']);

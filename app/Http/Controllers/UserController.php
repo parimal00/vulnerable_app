@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-    public function index(Request $request)
+    public function create()
     {
         return view('user.index');
     }
 
-    public function store(UserStoreRequest $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -22,7 +22,7 @@ class UserController extends Controller
             'password' => 'required|confirmed'
         ]);
 
-        User::create($request->all());
+        User::create($request->validated());
 
         return "success";
     }
